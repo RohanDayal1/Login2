@@ -37,9 +37,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn) {
         try {
             // Bereid de SQL-query voor
-            $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (:username, :password)");
-            $stmt->bindParam(':username', $username);
-            $stmt->bindParam(':password', $password);
+            $stmt = $conn->prepare("INSERT INTO users (gebruikersnaam, wachtwoord) VALUES (:username, :wachtwoord)");
+            $stmt->bindParam(':gebruikersnaam', $gebruikersnaam);
+            $stmt->bindParam(':wachtwoord', $wachtwoord);
 
             // Voer de query uit
             $stmt->execute();
@@ -63,9 +63,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h1>Registratie</h1>
     <form action="" method="POST">
         <label for="username">Gebruikersnaam:</label>
-        <input type="text" id="username" name="username" required><br>
+        <input type="text" id="gebruikersnaam" name="username" required><br>
         <label for="password">Wachtwoord:</label>
-        <input type="password" id="password" name="password" required><br>
+        <input type="password" id="wachtwoord" name="password" required><br>
     </form>
     <a href="login_form.php">login</a>
 </body>
