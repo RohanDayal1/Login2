@@ -24,8 +24,8 @@ session_start();
 
 // Controleer of het formulier is verzonden
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = $_POST['gebruikersnaam'];
+    $password = $_POST['wachtwoord'];
 
     // Maak een databaseverbinding
     $conn = ConnectDb();
@@ -33,9 +33,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn) {
         try {
             // Bereid de SQL-query voor om gebruikersgegevens op te halen
-            $stmt = $conn->prepare("SELECT * FROM users WHERE username = :username AND password = :password");
-            $stmt->bindParam(':username', $username);
-            $stmt->bindParam(':password', $password);
+            $stmt = $conn->prepare("SELECT * FROM users WHERE gebruikersnaam = :gebruikersnaam AND wachtwoord = :wachtwoord");
+            $stmt->bindParam(':$gebruikersnaam', $gebruikersnaam);
+            $stmt->bindParam(':$wachtwoord', $wachtwoord);
 
             // Voer de query uit
             $stmt->execute();
@@ -43,10 +43,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Controleer of er een gebruiker bestaat met de opgegeven gebruikersnaam en wachtwoord
             if ($stmt->rowCount() > 0) {
                 // Authenticatie succesvol
-                $_SESSION['username'] = $username;
+                $_SESSION['gebruikersnaam'] = $gebruikersnaam;
                 echo "Je bent ingelogd met,  
-                gebruikersnaam: $username
-                wachtwoord: $password";
+                gebruikersnaam: $gebruikersnaam
+                wachtwoord: $wachtwoord";
             } else {
                 // Authenticatie mislukt
                 echo "Login is mislukt";
