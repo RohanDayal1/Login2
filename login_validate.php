@@ -24,8 +24,8 @@ session_start();
 
 // Controleer of het formulier is verzonden
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['gebruikersnaam'];
-    $password = $_POST['wachtwoord'];
+    $gebruikersnaam = $_POST['gebruikersnaam'];
+    $wachtwoord = $_POST['wachtwoord'];
 
     // Maak een databaseverbinding
     $conn = ConnectDb();
