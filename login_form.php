@@ -55,9 +55,9 @@ if (isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true) {
     <h1>login here...</h1>
     <form action="login_validate.php" method="POST">
         <label for="username">Gebruikersnaam:</label>
-        <input type="text" id="username" name="username" required><br>
+        <input type="text" id="gebruikersnaam" name="username" required><br>
         <label for="password">Wachtwoord:</label>
-        <input type="password" id="password" name="password" required><br>
+        <input type="password" id="wachtwoord" name="password" required><br>
         <input type="submit" value="login">
     </form>
     <a href="register.php">register</a>
